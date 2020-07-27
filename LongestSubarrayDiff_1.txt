@@ -1,0 +1,64 @@
+n = list(map(int, input().strip().split(" ")))
+size = n[0]
+arr = n[1:]
+def longestSubarray(A): 
+      
+    # Initialize a variable to store 
+    # length of longest sub-array 
+    res = []
+    maxLen = 0
+    beginning = 0
+    window = {} 
+    start = 0
+    for end in range(len(arr)): 
+  
+        # Increment the count of that 
+        # element in the window 
+        if arr[end] in window: 
+            window[arr[end]] += 1
+        else: 
+            window[arr[end]] = 1
+        minimum = min(list(window.keys())) 
+        maximum = max(list(window.keys())) 
+        print(maximum)
+  
+        # If the difference is not 
+        # greater than X 
+        if maximum - minimum <= 1: 
+              
+            # Update the length of the longest 
+            # sub-array and store the beginning 
+            # of the sub-array 
+            if maxLen < end - start + 1: 
+                maxLen = end - start + 1
+                beginning = start 
+  
+        # Decrease the size of the window 
+        else: 
+            while start < end: 
+  
+                # Remove the element at start 
+                window[arr[start]] -= 1
+  
+                # Remove the element from the window 
+                # if its count is zero 
+                if window[arr[start]] == 0: 
+                    window.pop(arr[start]) 
+  
+                # Increment the start of the window 
+                start += 1
+  
+                # Find the maximum and minimum element 
+                # in the current window 
+                minimum = min(list(window.keys())) 
+                maximum = max(list(window.keys())) 
+  
+                # Stop decreasing the size of window 
+                # when difference is not greater 
+                if maximum - minimum <= 1: 
+                    break
+                      
+    # Print the longest sub-array 
+    for i in range(beginning, beginning + maxLen):
+        res.append(arr[i])
+    return len(res)

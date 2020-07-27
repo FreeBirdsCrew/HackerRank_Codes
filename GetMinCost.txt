@@ -1,0 +1,9 @@
+def getMinCost(crew_id, job_id):
+
+    crew_id = sorted(crew_id)
+    job_id = sorted(job_id)
+
+    cost = [job_id - crew_id for (job_id, crew_id) in zip(job_id, crew_id)]
+    cost = [abs(x) for x in cost]
+    cost = sum(cost)
+    return cost
