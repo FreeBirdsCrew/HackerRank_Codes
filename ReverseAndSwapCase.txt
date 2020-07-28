@@ -1,0 +1,12 @@
+def swap_case(s): #Or Swapcase function in Python list
+    input_list = list(s)
+    return "".join(i.lower() if i in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" else i.upper() for i in input_list)
+
+def reverse_words_order_and_swap_cases(sentence):
+    words = sentence.split(' ')  
+    reverse_sentence = ' '.join(reversed(words))
+    return swap_case(reverse_sentence)
+
+#reversed_string = " ".join(my_string.split(" ")[::-1
+
+reverse_words_order_and_swap_cases("aWESOME is cODING")
