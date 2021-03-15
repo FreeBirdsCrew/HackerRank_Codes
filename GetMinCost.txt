@@ -1,3 +1,5 @@
+#Problem - Find the Shortest or Minimum Cost of Distance Travel by Workers from Current Location to Job Loacation.
+
 def getMinCost(crew_id, job_id):
 
     crew_id = sorted(crew_id)
